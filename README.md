@@ -25,6 +25,34 @@ pip install -r requirements.txt
 
 > Run this command after activating your virtual environment.
 
+### Project Setup
+#### Qdrant Database Setup (Docker)
+The project uses Qdrant as a vector database. You can run it locally using Docker:
+```bash
+docker run -d --name qdrant -p 6333:6333 -p 6334:6334 -v qdrant_storage:/qdrant/storage qdrant/qdrant
+```
+
+#### Ollama 
+The project uses Ollama, a tool for running large language models locally, to paraphrase the activities for evaluation.
+- Install: [Ollama.com](https://ollama.com/) or via Homebrew (macOS):
+
+```bash
+brew install ollama
+```
+
+- Run Ollama daemon:
+
+```bash
+ollama run
+```
+
+- Install models (examples: `gemma3:12b`, `mistral-small3.2`, `cogito:14b`):
+
+```bash
+ollama pull <model_name>
+```
+
+
 ---
 
 ## Evaluation and Testing

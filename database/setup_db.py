@@ -77,7 +77,7 @@ def extract_and_process_activities(df: pd.DataFrame) -> List[str]:
 
 if __name__ == "__main__":
     model_name = "all-MiniLM-L6-v2"
-    path_to_sap_data = "/Users/dennis/Documents/BP/sap_models_atoms_logs.csv"
+    path_to_sap_data = "sap_models_atoms_logs.csv"
     sap_df = pd.read_csv(path_to_sap_data)
 
     activities = extract_and_process_activities(sap_df)
