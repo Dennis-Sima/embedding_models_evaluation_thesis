@@ -48,7 +48,7 @@ def add_noise_to_paraphrases(input_file: str, output_file: str, error_rate: floa
 if __name__ == "__main__":
     # Default parameters
     INPUT_FILE = "activities_with_synonyms_merged_noise_0.0.json"
-    ERROR_RATE = 0.2
+    ERROR_RATE = 0.0
     OUTPUT_FILE = f"activities_with_synonyms_merged_noise_{ERROR_RATE}.json"
 
     add_noise_to_paraphrases(INPUT_FILE, OUTPUT_FILE, ERROR_RATE)
