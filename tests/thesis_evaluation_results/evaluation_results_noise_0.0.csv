@@ -1,0 +1,31 @@
+Model Name,Parameter,Model,Dimension,MRR,Hits@1,Hits@2,Hits@3,Hits@5,Hits@10,Link
+all-MiniLM-L6-v2,22.7M,BERT,384,0.5161,0.4256,0.5271,0.5754,0.6368,0.709,https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+NovaSearch/stella_en_1.5B_v5,"1,54B",GTE,1024,0.6368,0.542,0.6531,0.7039,0.7627,0.828,https://huggingface.co/NovaSearch/stella_en_1.5B_v5
+NovaSearch/jasper_en_vision_language_v1,"1,99B",GTE,1024,0.6263,0.5324,0.6409,0.6926,0.752,0.818,https://huggingface.co/NovaSearch/jasper_en_vision_language_v1
+Alibaba-NLP/gte-Qwen2-1.5B-instruct,"1,78B",GTE,1536,0.6279,0.5327,0.6419,0.6976,0.7553,0.8199,https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct
+intfloat/multilingual-e5-large,560M,XLM-RoBERTa,1024,0.6015,0.5139,0.6167,0.665,0.7186,0.7765,https://huggingface.co/intfloat/multilingual-e5-large
+Lajavaness/bilingual-embedding-large,560M,XLM-RoBERTa,1024,0.6444,0.5548,0.6618,0.709,0.7629,0.8222,https://huggingface.co/Lajavaness/bilingual-embedding-large
+intfloat/multilingual-e5-large-instruct,560M,XLM-RoBERTa,1024,0.6277,0.538,0.643,0.6938,0.7462,0.8073,https://huggingface.co/intfloat/multilingual-e5-large-instruct
+ibm-granite/granite-embedding-278m-multilingual,278M,XLM-RoBERTa,768,0.6281,0.5435,0.6423,0.6896,0.7409,0.7984,https://huggingface.co/ibm-granite/granite-embedding-278m-multilingual
+BAAI/bge-large-en-v1.5,335M,BGE,1024,0.6078,0.5155,0.623,0.6738,0.7304,0.7941,https://huggingface.co/BAAI/bge-large-en-v1.5
+Alibaba-NLP/gte-large-en-v1.5,434M,GTE,1024,0.5999,0.5041,0.6166,0.6685,0.7257,0.7934,https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5
+thenlper/gte-large,335M,GTE,1024,0.6009,0.5057,0.6149,0.6695,0.7272,0.7951,https://huggingface.co/thenlper/gte-large
+nomic-ai/nomic-embed-text-v1.5,137M,BERT,768,0.5643,0.4708,0.5784,0.6299,0.6882,0.7556,https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
+Gameselo/STS-multilingual-mpnet-base-v2,278M,XLM-RoBERTa,768,0.4923,0.4161,0.5022,0.5435,0.5932,0.6527,https://huggingface.co/Gameselo/STS-multilingual-mpnet-base-v2
+HIT-TMG/KaLM-embedding-multilingual-mini-instruct-v2,494M,Qwen2,896,0.5336,0.4478,0.5457,0.5934,0.6464,0.711,https://huggingface.co/HIT-TMG/KaLM-embedding-multilingual-mini-instruct-v2
+Alibaba-NLP/gte-multilingual-base,305M,GTE,768,0.5946,0.5,0.612,0.661,0.7196,0.785,https://huggingface.co/Alibaba-NLP/gte-multilingual-base
+intfloat/multilingual-e5-small,118M,E5,384,0.499,0.4162,0.5105,0.5554,0.6074,0.673,https://huggingface.co/intfloat/multilingual-e5-small
+Snowflake/snowflake-arctic-embed-l-v2.0,568M,XLM-RoBERTa,1024,0.5829,0.4928,0.597,0.6468,0.7021,0.7665,https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0
+infly/inf-retriever-v1-1.5b,1.54B,GTE,1536,0.3089,0.2561,0.3186,0.3485,0.3794,0.4128,https://huggingface.co/infly/inf-retriever-v1-1.5b
+Qwen/Qwen3-Embedding-0.6B,596M,Qwen3,1024,0.5276,0.4329,0.5395,0.594,0.6537,0.725,https://huggingface.co/Qwen/Qwen3-Embedding-0.6B
+Qwen/Qwen3-Embedding-4B,4.02B,Qwen3,2560,0.5876,0.4886,0.6023,0.6581,0.7197,0.7895,https://huggingface.co/Qwen/Qwen3-Embedding-4B
+sdadas/mmlw-e5-large,560M,XLM-RoBERTa,1024,0.6147,0.5205,0.628,0.6823,0.742,0.8061,https://huggingface.co/sdadas/mmlw-e5-large
+Lajavaness/bilingual-embedding-base,278M,XLM-RoBERTa ,1024,0.5984,0.5091,0.6119,0.662,0.7166,0.781,https://huggingface.co/Lajavaness/bilingual-embedding-base
+sentence-transformers/gtr-t5-xxl,4.86B,T5,768,0.5895,0.4948,0.6064,0.6571,0.7149,0.7803,https://huggingface.co/sentence-transformers/gtr-t5-xxl
+sentence-transformers/paraphrase-multilingual-mpnet-base-v2,278M,XLM-RoBERTa,768,0.5586,0.4689,0.5704,0.618,0.6768,0.7474,https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2
+manu/sentence_croissant_alpha_v0.4,1.28B,LLaMA,2048,0.4694,0.3786,0.4772,0.5299,0.5891,0.6667,https://huggingface.co/manu/sentence_croissant_alpha_v0.4
+jinaai/jina-embeddings-v3,572M,XLM-RoBERTa,1024,0.6148,0.516,0.6323,0.687,0.7456,0.812,https://huggingface.co/jinaai/jina-embeddings-v3
+intfloat/e5-large-v2,335M,E5 ,1024,0.5677,0.4787,0.5808,0.6292,0.6845,0.7523,https://huggingface.co/intfloat/e5-large-v2
+avsolatorio/GIST-large-Embedding-v0,335M,BGE,1024,0.6056,0.5107,0.6218,0.6734,0.7303,0.7969,https://huggingface.co/avsolatorio/GIST-large-Embedding-v0
+Alibaba-NLP/gme-Qwen2-VL-2B-Instruct,2.21B,Qwen2-VL,1536,0.5811,0.4859,0.596,0.6472,0.7074,0.7766,https://huggingface.co/Alibaba-NLP/gme-Qwen2-VL-2B-Instruct
+Jaume/gemma-2b-embeddings,2.51B,Gemma,2048,0.1468,0.1117,0.1458,0.1664,0.1925,0.2322,https://huggingface.co/Jaume/gemma-2b-embeddings
