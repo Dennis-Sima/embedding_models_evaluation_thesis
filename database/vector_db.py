@@ -34,8 +34,7 @@ def import_activities(
     model_name: str,
     collection: str,
     host: str = "localhost",
-    port: int = 6333,
-    batch_size: int = 64,
+    port: int = 6333
 ) -> None:
     """
     Embed activities and store them in a Qdrant collection.
@@ -46,7 +45,6 @@ def import_activities(
         collection: Target Qdrant collection name.
         host: Qdrant host (default: localhost).
         port: Qdrant port (default: 6333).
-        batch_size: Number of texts to insert per batch.
     """
     # Initialize embedding model
     embeddings = create_embedding_model(model_name)
@@ -60,19 +58,15 @@ def import_activities(
     reset_collection(client, collection, vector_size)
 
     # Initialize vector store
-    store = QdrantVectorStore(
+    vector_store = QdrantVectorStore(
         client=client,
         collection_name=collection,
         embedding=embeddings,
     )
 
-    # Batch insert activities
-    print(f"Uploading {len(activities)} activities to collection '{collection}'...")
-    for i in tqdm(range(0, len(activities), batch_size), desc="Embedding batches"):
-        batch = activities[i:i + batch_size]
-        store.add_texts(batch)
+    print("Embedding and uploading activities to Qdrant...")
+    for activity_text in tqdm(activities, desc="Processing activities"):
+        vector_store.add_texts([activity_text])
 
-    # Quick validation
-    results = store.similarity_search("test query", k=3)
-    print(f"Imported {len(activities)} activities using model '{model_name}'")
-    print(f"Example search returned {len(results)} results")
+    test_results = vector_store.similarity_search("test query", k=1000000)
+    print(f"Loaded {len(test_results)} activities into vector store: '{model_name}'")

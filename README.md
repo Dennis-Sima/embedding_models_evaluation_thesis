@@ -14,8 +14,6 @@ The project uses a Python-based setup and requires several dependencies. It's re
 
 ### Project Requirements
 - **Python Version**: 3.11.11  
-- **LLM Host**: To generate paraphrases, you must run **Ollama** locally or on a server.  
-  - Install all necessary LLMs and embedding models into Ollama.  
 
 - **Dependencies**: Install all required packages using:  
 

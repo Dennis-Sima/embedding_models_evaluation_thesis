@@ -2,13 +2,14 @@ import json
 import re
 import pandas as pd
 from typing import List
+from tqdm import tqdm
 from database import vector_db
 
 # Regex pattern for removing ID's from the SAP dataset
 ACTIVITY_CLEANING_PATTERN = re.compile(
-    r"""^(
+        r"""^(
         \d\s[A-Z]{2}\s-\s[A-Z]{2}\s-\s\d{2}\s-\s+  |  # 6 SZ - XX - 01 -
-        [A-Z]+\s-\s+                                |  # EWM -
+        [A-Z]+\s-\s+                                |  # EWM - and similar
         \(\d+\s+[A-Z]+\d*\)\s*                      |  # (2 F2)
         \d\s+[A-Z]\d:\s*                            |  # 2 T3:, 1 G5:
         \(?\d+\s?[A-Z]+\)?\s*[-–—]+\s*              |  # (2 F2), 1 G0 –
@@ -21,11 +22,11 @@ ACTIVITY_CLEANING_PATTERN = re.compile(
         [A-Z]+\s*-\s*[A-Z]{2}\s*-\s+                |  # BJK - XX -
         \d{1,2}\s*[-–—]+\s+                         |  # 2 –, 04 –
         \d+(?:\.\d+)+\s+                            |  # 8.5.1.3
-        [A-Z]+-\d+(?:-\d+)+(?:\s+|(?=[A-Z]))        |  # MFS-50-10-30
+        [A-Z]+-\d+(?:-\d+)+(?:\s+|(?=[A-Z]))        |  # MFS-50-10-30 or MLG-30-10-190
         [A-Z]{2}\s*[-–—]\s*\d{2}\s*[-–—]\s+         # XX – 01 –
     )""",
-    re.VERBOSE | re.MULTILINE,
-)
+        re.VERBOSE | re.MULTILINE
+    )
 
 def extract_and_process_activities(df: pd.DataFrame) -> List[str]:
     """
@@ -37,9 +38,10 @@ def extract_and_process_activities(df: pd.DataFrame) -> List[str]:
     Returns:
         List of original activity texts (to be embedded in vector DB).
     """
-    activities_raw: List[str] = []
-    activities_clean: List[str] = []
-    mapping: dict[str, str] = {}
+    activities_by_model = {}
+    activities_original = []
+    activities_clean = []
+    activities_mapping = {}
 
     for _, row in df.iterrows():
         model_id = row[0]
@@ -58,33 +60,36 @@ def extract_and_process_activities(df: pd.DataFrame) -> List[str]:
                 continue
 
             for operand in operands:
-                cleaned = ACTIVITY_CLEANING_PATTERN.sub("", operand).strip()
-                activities_raw.append(operand)
-                activities_clean.append(cleaned)
-                mapping[operand] = cleaned
+                activities_by_model[operand] = model_id
+
+    for activity, _ in tqdm(list(activities_by_model.items())[-100:], desc="Processing activities"):
+        cleaned_activity = ACTIVITY_CLEANING_PATTERN.sub("", activity).strip()
+        activities_clean.append(cleaned_activity)
+        activities_original.append(activity)
+        activities_mapping[activity] = cleaned_activity  # Create mapping
 
     # Save activities to JSON
     with open("../activities_original.json", "w", encoding="utf-8") as f:
-        json.dump(activities_raw, f, ensure_ascii=False, indent=2)
+        json.dump(activities_original, f, ensure_ascii=False, indent=2)
 
     with open("../activities_clean.json", "w", encoding="utf-8") as f:
         json.dump(activities_clean, f, ensure_ascii=False, indent=2)
 
-    with open("../activities_mapping.json", "w", encoding="utf-8") as f:
-        json.dump(mapping, f, ensure_ascii=False, indent=2)
+    with open("../activities.json", "w", encoding="utf-8") as f:
+        json.dump(activities_mapping, f, ensure_ascii=False, indent=2)
 
-    return activities_raw
+    return activities_original
 
 if __name__ == "__main__":
     model_name = "all-MiniLM-L6-v2"
-    path_to_sap_data = "sap_models_atoms_logs.csv"
+    path_to_sap_data = "/sap_models_atoms_logs.csv"
     sap_df = pd.read_csv(path_to_sap_data)
 
     activities = extract_and_process_activities(sap_df)
 
     collection = model_name.replace("/", "-")
     vector_db.import_activities(
-        activities=activities,
-        model_name=model_name,
-        collection=collection,
-    )
+         activities=activities,
+         model_name=model_name,
+         collection=collection,
+     )
