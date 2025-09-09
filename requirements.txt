@@ -1,0 +1,11 @@
+langchain-huggingface
+langchain-qdrant
+sentence-transformers
+qdrant-client
+tqdm
+numpy
+torch
+transformers
+jupyter
+notebook
+ipykernel
