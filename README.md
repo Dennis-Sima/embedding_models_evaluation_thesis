@@ -2,9 +2,11 @@
 
 As modern embedding models continue to evolve and increasingly capture the semantic context of data and text with greater precision, new opportunities for their application are emerging.
 A particularly relevant use case in the context of process modeling and process mining is the mapping of natural language queries (NLQs) to elements of process models (e.g., activities) without requiring prior knowledge of their technical labels. This makes access significantly easier, especially for people without in-depth domain expertise.
-Although numerous modern embedding models exist today, many of which are specifically designed for semantic text search and are freely available as open-source models on platforms such as Hugging Face, there are still no significant evaluations of these modern models within the mentioned application context. 
+<br>Although numerous modern embedding models exist today, many of which are specifically designed for semantic text search and are freely available as open-source models on platforms such as Hugging Face, there are still no significant evaluations of these modern models within the mentioned application context. 
 <br>Therefore, this bachelor thesis investigates which embedding models achieve the best results in various tests and evaluations when mapping NLQs to the correct activities of Process models. Particular attention is given to the robustness of the models in handling erroneous or incomplete NLQs and to their accuracy in searching for activities.
-<br>The results of this work can, on the one hand, contribute to optimizing semantic search in process data-driven applications, and on the other hand, provide general recommendations on which embedding model is most suitable under specific assumptions in the fields of process modeling and process mining.
+
+The results of this work can, on the one hand, contribute to optimizing semantic search in process data-driven applications, and on the other hand, provide general recommendations on which embedding model is most suitable under specific assumptions in the fields of process modeling and process mining.
+
 ---
 
 ## Setup and Requirements
